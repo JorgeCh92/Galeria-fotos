@@ -1,4 +1,22 @@
 <div>
     <h1>Galería</h1>
-    <p>Galería works</p>
+    <div>
+        <img class="imagenSeleccionada" src="{{galeriaAnimales[number].src}}{{galeriaAnimales[number].title}}">
+    </div>
+    <div class="listaImagenes">
+        <div *ngFor="let item of galeriaAnimales">
+            <img *ngIf="number===item.id" src="{{galeriaAnimales[item.id].src}}{{galeriaAnimales[item.id].title}}"
+                (click)="number= item.id" class="imageSelected">
+            <img *ngIf="number!=item.id" src="{{galeriaAnimales[item.id].src}}{{galeriaAnimales[item.id].title}}"
+                (click)="number= item.id">
+        </div>
+    </div>
+    <div class="botones">
+        <div><a (click)="anterior()" >Anterior</a></div>
+        <div><a (click)="siguiente()" >Siguiente</a></div>
+        <div><a (click)="aumentar()" >Aumentar</a></div>
+        <div><a (click)="disminuir()" >Disminuir</a></div>
+        <div [hidden]="isPlay"><a (click)="play()" >Play</a></div>
+        <div [hidden]="!isPlay"><a (click)="stop()">Stop</a></div>
+    </div>
 </div>
